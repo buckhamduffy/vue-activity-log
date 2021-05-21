@@ -17,15 +17,25 @@ export default Vue.extend({
 						description: 'Test Description'
 					},
 					{
-						id: 1,
+						id: 2,
 						causer: {
 							first_name: 'Alex',
 							last_name: 'Duffy'
 						},
-						description: 'Test Description'
+						description: 'updated',
+						properties: {
+							attributes: {
+								name: 'Alex'
+							},
+							old: {
+								name: 'Aaron'
+							}
+						}
 					}
 				],
-				meta: {}
+				meta: {
+
+				}
 			}
 		}
 	},

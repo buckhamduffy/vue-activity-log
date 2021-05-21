@@ -2,8 +2,7 @@
 	<b-overlay :show="loading">
 		<div class="row">
 			<div class="col-12">
-				<b-alert v-if="activityLogs.data.length < 1"
-								 :show="true"
+				<b-alert :show="activityLogs.data.length === 0"
 								 variant="warning"
 								 class="m-3">
 					No Activity Logs to display
@@ -93,8 +92,11 @@ export default {
 		activityLogs: {
 			type: Object,
 			required: true,
-			validation: () => {
-				return true
+			validation: (value) => {
+				if (typeof value !== 'object') {
+					return false;
+				}
+				return 'data' in value && 'meta' in value;
 			}
 		},
 		loading: {
@@ -106,13 +108,13 @@ export default {
 	methods: {
 		causerName(activity_log) {
 			if (!activity_log.causer) return 'System';
-			return activity_log.causer.first_name + ' ' + activity_log.causer.last_name
+			return activity_log.causer.first_name + ' ' + activity_log.causer.last_name;
 		},
 		fetchActivityLogs(page) {
-			this.$emit('fetch', page)
+			this.$emit('fetch', page);
 		},
 		dayjs(data) {
-			return dayjs(data)
+			return dayjs(data);
 		}
 	}
 }
