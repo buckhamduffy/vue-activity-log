@@ -27,13 +27,13 @@
 										v-for="key in Object.keys(activity_log.properties.attributes)"
 										:key="key">
 									<strong>{{ key | humanize }}</strong>
-									<template v-if="activity_log.properties.old[key]">
+									<template>
 										from
 										<strong>
 											{{ activity_log.properties.old[key] | humanize }}
 										</strong>
 									</template>
-									<template v-if="activity_log.properties.attributes[key]">
+									<template>
 										to
 										<strong>
 											{{ activity_log.properties.attributes[key] | humanize }}
@@ -67,6 +67,14 @@ import dayjs from 'dayjs'
 export default {
 	filters: {
 		humanize(value) {
+			if (value === 0) {
+				return value;
+			}
+
+			if (value === null) {
+				return 'blank';
+			}
+
 			if (!value) return ''
 			value = value.toString();
 			let isFloat = Number(value) === value && value % 1 !== 0;
