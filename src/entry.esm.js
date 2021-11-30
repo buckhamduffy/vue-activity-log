@@ -1,6 +1,6 @@
 
 // Import vue component
-import component from '@/activity-log.vue';
+import component from '@/ActivityLog.vue';
 
 // Default export is installable instance of component.
 // IIFE injects install function into component, allowing component
