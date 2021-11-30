@@ -3,11 +3,11 @@
   "version": "1.0.2",
   "description": "",
   "repository": {
-	"type": "git",
-	"url": "git@github.com:buckhamduffy/vue-activity-log.git"
+    "type": "git",
+    "url": "git@github.com:buckhamduffy/vue-activity-log.git"
   },
   "author": {
-	"name": "Buckham Duffy"
+    "name": "Buckham Duffy"
   },
   "main": "dist/activity-log.ssr.js",
   "browser": "dist/activity-log.esm.js",
@@ -48,6 +48,8 @@
   },
   "dependencies": {
     "bootstrap-vue": "^2.21.2",
-    "dayjs": "^1.10.4"
+    "dayjs": "^1.10.4",
+    "lodash": "^4.17.21",
+    "vue-json-pretty": "^1.8.2"
   }
 }
