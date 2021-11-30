@@ -9,7 +9,7 @@ import replace from '@rollup/plugin-replace';
 import babel from '@rollup/plugin-babel';
 import { terser } from 'rollup-plugin-terser';
 import minimist from 'minimist';
-
+import css from 'rollup-plugin-css-only'
 // Get browserslist config and remove ie from es build targets
 const esbrowserslist = fs.readFileSync('./.browserslistrc')
   .toString()
@@ -28,6 +28,7 @@ const baseConfig = {
   input: 'src/entry.js',
   plugins: {
     preVue: [
+      css(),
       alias({
         entries: [
           {
@@ -57,6 +58,7 @@ const baseConfig = {
       extensions: ['.js', '.jsx', '.ts', '.tsx', '.vue'],
       babelHelpers: 'bundled',
     },
+
   },
 };
 
