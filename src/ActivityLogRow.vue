@@ -88,7 +88,13 @@
 		methods: {
 			causerName(activityLog) {
 				if (!activityLog.causer) return 'System';
-				return activityLog.causer.first_name + ' ' + activityLog.causer.last_name;
+				let content = activityLog.causer.first_name + ' ' + activityLog.causer.last_name;
+
+				if (activityLog.role) {
+					return content + ` (${activityLog.role})`
+				}
+
+				return content
 			},
 
 			dayjs(data) {
