@@ -88,10 +88,11 @@
 		methods: {
 			causerName(activityLog) {
 				if (!activityLog.causer) return 'System';
+
 				let content = activityLog.causer.first_name + ' ' + activityLog.causer.last_name;
 
-				if (activityLog.role) {
-					return content + ` (${activityLog.role})`
+				if (activityLog.causer.role) {
+					return content + ` (${activityLog.causer.role})`
 				}
 
 				return content
