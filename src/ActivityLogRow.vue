@@ -60,7 +60,7 @@
 </template>
 
 <script>
-	import {isArray, isNumber, isObject} from 'lodash';
+	import {isArray, isBoolean, isNumber, isObject} from 'lodash';
 	import dayjs from 'dayjs'
 	import VueJsonPretty from 'vue-json-pretty';
 	import 'vue-json-pretty/lib/styles.css';
@@ -103,6 +103,10 @@
 			},
 			humanize(value) {
 				if (!value) return 'N/A'
+
+				if (isBoolean(value)) {
+					return value ? 'Yes' : 'No'
+				}
 
 				if (isNumber(value)) {
 					return value;
