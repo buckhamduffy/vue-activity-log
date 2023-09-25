@@ -21,18 +21,18 @@
 
 					<strong>{{ humanize(key) }}</strong>
 					<template v-if="!isObject(activityLog.properties.attributes[key])">
-						<span v-if="activityLog.properties.old[key]">
-						from
-						<strong>
-							{{ humanize(activityLog.properties.old[key]) }}
-						</strong>
-					</span>
-						<span v-if="activityLog.properties.attributes[key]">
-						to
-						<strong>
-							{{ humanize(activityLog.properties.attributes[key]) }}
-						</strong>
-					</span>
+						<span v-if="key in activityLog.properties.old">
+							from
+							<strong>
+								{{ humanize(activityLog.properties.old[key]) }}
+							</strong>
+						</span>
+						<span v-if="key in activityLog.properties.attributes">
+							to
+							<strong>
+								{{ humanize(activityLog.properties.attributes[key]) }}
+							</strong>
+						</span>
 					</template>
 					<template v-else>
 						<a href="#" @click.prevent="toggleDiff">
@@ -64,6 +64,7 @@
 	import dayjs from 'dayjs'
 	import VueJsonPretty from 'vue-json-pretty';
 	import 'vue-json-pretty/lib/styles.css';
+
 	export default {
 		name: 'ActivityLogRow',
 		components: {
@@ -102,11 +103,11 @@
 				return dayjs(data);
 			},
 			humanize(value) {
-				if (!value) return 'N/A'
-
 				if (isBoolean(value)) {
 					return value ? 'Yes' : 'No'
 				}
+
+				if (!value) return 'N/A'
 
 				if (isNumber(value)) {
 					return value;
