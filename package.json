@@ -51,6 +51,6 @@
     "bootstrap-vue": "^2.21.2",
     "dayjs": "^1.10.4",
     "lodash": "^4.17.21",
-    "vue-json-pretty": "^1.8.2"
+    "vue-json-pretty": "^2.0.0"
   }
 }
